@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petclinic-ingress
+  namespace: petclinic-namespace
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: localhost
+    http:
+      paths:
+      # 🏥 Pet Management - using the "admin" port (5555)
+      - path: /pets
+        pathType: Prefix
+        backend:
+          service:
+            name: petclinic-service
+            port:
+              number: 5555
+      # 📅 Appointments - using the "api" port (6666) 
+      - path: /appointments
+        pathType: Prefix
+        backend:
+          service:
+            name: petclinic-service
+            port:
+              number: 6666
+      # 🎯 Default catch-all - using the main port (8000)
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: petclinic-service
+            port:
+              number: 8000
