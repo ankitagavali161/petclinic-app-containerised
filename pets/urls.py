@@ -8,5 +8,8 @@ router.register(r'appointments', views.AppointmentViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('', views.home, name='home'),
+    path('', views.index, name='index'),
+    path('appointments/', views.index, name='appointments'),
+    path('pets/', views.index, name='pets'),
+    path('api-info/', views.home, name='api-info'),
 ]

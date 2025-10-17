@@ -1,6 +1,5 @@
 # Django PetClinic with Kubernetes & Ingress
 
-**Created by: Ankita Gavali** 🚀
 
 A modern PetClinic management system built with Django and deployed on Kubernetes with NGINX Ingress controller, featuring playful port configurations and scalable architecture. This project demonstrates advanced Kubernetes concepts including Ingress routing, service port mapping, and local development with Kind clusters.
 

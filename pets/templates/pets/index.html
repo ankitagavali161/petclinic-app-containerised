@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetClinic - Modern Pet Management System</title>
+    <link rel="stylesheet" href="{% load static %}{% static 'pets/css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-paw"></i>
+                <span>PetClinic</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/pets/" class="nav-link">Pets</a>
+                <a href="/appointments/" class="nav-link">Appointments</a>
+                <a href="/api-info/" class="nav-link">API Info</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome to <span class="gradient-text">PetClinic</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Modern pet management system built with Django and Kubernetes
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPets()">
+                        <i class="fas fa-paw"></i>
+                        Manage Pets
+                    </button>
+                    <button class="btn btn-secondary" onclick="showAppointments()">
+                        <i class="fas fa-calendar"></i>
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health Tracking</h3>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Expert Care</h3>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Support</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose PetClinic?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3>Pet Management</h3>
+                    <p>Complete pet registration and health tracking system</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Appointment Scheduling</h3>
+                    <p>Easy booking and management of veterinary appointments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Health Analytics</h3>
+                    <p>Track your pet's health history and progress</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your pet's information anywhere, anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pets Section -->
+    <section id="pets" class="pets-section">
+        <div class="container">
+            <h2 class="section-title">Pet Management</h2>
+            <div class="pets-container">
+                <div class="pets-header">
+                    <h3>Your Pets</h3>
+                    <button class="btn btn-primary" onclick="addPet()">
+                        <i class="fas fa-plus"></i>
+                        Add New Pet
+                    </button>
+                </div>
+                <div id="pets-list" class="pets-list">
+                    <!-- Pets will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointments Section -->
+    <section id="appointments" class="appointments-section">
+        <div class="container">
+            <h2 class="section-title">Appointment Scheduling</h2>
+            <div class="appointments-container">
+                <div class="appointments-header">
+                    <h3>Upcoming Appointments</h3>
+                    <button class="btn btn-primary" onclick="bookAppointment()">
+                        <i class="fas fa-calendar-plus"></i>
+                        Book Appointment
+                    </button>
+                </div>
+                <div id="appointments-list" class="appointments-list">
+                    <!-- Appointments will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Info Section -->
+    <section class="api-section">
+        <div class="container">
+            <h2 class="section-title">API Endpoints</h2>
+            <div class="api-grid">
+                <div class="api-card">
+                    <h3><i class="fas fa-paw"></i> Pets API</h3>
+                    <div class="api-endpoints">
+                        <div class="endpoint">
+                            <span class="method get">GET</span>
+                            <span class="url">/api/pets/</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method post">POST</span>
+                            <span class="url">/api/pets/</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="api-card">
+                    <h3><i class="fas fa-calendar"></i> Appointments API</h3>
+                    <div class="api-endpoints">
+                        <div class="endpoint">
+                            <span class="method get">GET</span>
+                            <span class="url">/api/appointments/</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method post">POST</span>
+                            <span class="url">/api/appointments/</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> PetClinic</h3>
+                    <p>Modern pet management system built with Django and Kubernetes</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/pets/">Pets</a></li>
+                        <li><a href="/appointments/">Appointments</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>API</h4>
+                    <ul>
+                        <li><a href="/api/pets/">Pets API</a></li>
+                        <li><a href="/api/appointments/">Appointments API</a></li>
+                        <li><a href="/admin/">Admin Panel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PetClinic. Created by Ankita Gavali 🚀</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="pet-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Pet</h2>
+            <form id="pet-form">
+                <div class="form-group">
+                    <label for="pet-name">Pet Name</label>
+                    <input type="text" id="pet-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="pet-species">Species</label>
+                    <select id="pet-species" name="species" required>
+                        <option value="">Select Species</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Bird">Bird</option>
+                        <option value="Rabbit">Rabbit</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pet-breed">Breed</label>
+                    <input type="text" id="pet-breed" name="breed">
+                </div>
+                <div class="form-group">
+                    <label for="pet-age">Age</label>
+                    <input type="number" id="pet-age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="owner-name">Owner Name</label>
+                    <input type="text" id="owner-name" name="owner_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="owner-phone">Owner Phone</label>
+                    <input type="tel" id="owner-phone" name="owner_phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Pet</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% load static %}{% static 'pets/js/script.js' %}"></script>
+</body>
+</html>
